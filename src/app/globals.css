@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   GHUBOR — Visual DNA
+   Armor for the Modern Gibbor. Dark. Sacred. Spare.
+   ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Palette ── */
+  --color-void: #0a0a0a;
+  --color-charcoal: #1a1a1a;
+  --color-ash: #2a2a2a;
+  --color-smoke: #3a3a3a;
+  --color-iron: #6a6a6a;
+  --color-stone: #8a8a8a;
+  --color-cream: #f5f0e8;
+  --color-cotton: #e8e0d0;
+  --color-parchment: #d4c9b5;
+  --color-oxblood: #8b1a1a;
+  --color-crimson: #a02020;
+  --color-blood: #6b0f0f;
+
+  /* ── Typography Scale ── */
+  --font-display: "UnifrakturCook", "Old English Text MT", serif;
+  --font-body: "Cormorant Garamond", "Georgia", serif;
+  --font-ui: "Inter", "Helvetica Neue", sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   BASE RESETS
+   ═══════════════════════════════════════════════════════════ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-cream);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  overflow-x: hidden;
+  padding-left: 10px;
+  padding-right: 10px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background-color: var(--color-oxblood);
+  color: var(--color-cream);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   TYPOGRAPHY UTILITIES
+   ═══════════════════════════════════════════════════════════ */
+
+.font-blackletter {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.font-scripture {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.8;
+  letter-spacing: 0.01em;
+}
+
+.font-ui {
+  font-family: var(--font-ui);
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CUSTOM SCROLLBAR
+   ═══════════════════════════════════════════════════════════ */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-ash);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-oxblood);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THE GRIND — Infinite Marquee
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes grind-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.grind-track {
+  display: flex;
+  animation: grind-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+.grind-track:hover {
+  animation-play-state: paused;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   REVEAL ANIMATIONS
+   ═══════════════════════════════════════════════════════════ */
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes line-reveal {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.animate-fade-rise {
+  animation: fade-rise 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-line-reveal {
+  animation: line-reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   CTA BUTTON STYLES
+   ═══════════════════════════════════════════════════════════ */
+
+.cta-acquire {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-cream);
+  background: transparent;
+  border: 1px solid var(--color-ash);
+  padding: 14px 40px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-acquire::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--color-oxblood);
+  transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.cta-acquire:hover {
+  border-color: var(--color-oxblood);
+}
+
+.cta-acquire:hover::before {
+  left: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   DIVIDER
+   ═══════════════════════════════════════════════════════════ */
+
+.sacred-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-oxblood);
+  margin: 0 auto;
+}
