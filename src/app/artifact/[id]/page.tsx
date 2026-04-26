@@ -172,11 +172,14 @@ export default function ArtifactPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 md:pt-48 flex-grow">
+      <main className="flex-grow flex flex-col">
+        {/* Concrete spacer to guarantee clearing the fixed Navbar */}
+        <div className="h-32 md:h-48 w-full flex-shrink-0" />
+
         {/* ═══════════════════════════════════════════════════════
            HERO — Asymmetric Editorial Layout
            ═══════════════════════════════════════════════════════ */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 py-10 md:py-16">
+        <section className="max-w-[1400px] mx-auto px-6 md:px-12 pb-12 md:pb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
             {/* Image Gallery */}
             <div className="relative">

@@ -35,22 +35,14 @@ export default function MythosPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 md:pt-48 flex-grow">
+      <main className="flex-grow flex flex-col">
+        {/* Concrete spacer to guarantee clearing the fixed Navbar */}
+        <div className="h-32 md:h-48 w-full flex-shrink-0" />
+
         {/* ═══════════════════════════════════════════════════════
            OPENING — The Word
            ═══════════════════════════════════════════════════════ */}
-        <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
-          {/* Background glyph */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-[0.04] pointer-events-none">
-            <Image
-              src="/images/details/glyph.png"
-              alt=""
-              width={600}
-              height={600}
-              className="object-contain"
-            />
-          </div>
-
+        <section className="flex flex-col items-center justify-center text-center px-6 relative overflow-hidden pb-32">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -60,7 +52,7 @@ export default function MythosPage() {
             <div className="sacred-divider mb-10 mx-auto" />
 
             <motion.p
-              className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-8"
+              className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-8 uppercase"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
@@ -96,55 +88,56 @@ export default function MythosPage() {
         {/* ═══════════════════════════════════════════════════════
            THE ORIGIN
            ═══════════════════════════════════════════════════════ */}
-        <section className="border-t border-ash/15 py-20 md:py-32">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div className="max-w-3xl mx-auto text-center">
+        <section className="py-24 md:py-40">
+          <div className="max-w-2xl mx-auto px-6 md:px-0">
             <RevealBlock>
-              <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
-                Origin
-              </p>
-              <div className="w-10 h-px bg-oxblood mb-10 mx-auto" />
+              <div className="text-center mb-16">
+                <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6 uppercase">
+                  Origin
+                </p>
+                <div className="w-px h-12 bg-oxblood/40 mx-auto mb-10" />
+                <h2 className="font-blackletter text-4xl md:text-5xl text-cream">
+                  The Word Before the Garment
+                </h2>
+              </div>
 
-              <h2 className="font-blackletter text-3xl md:text-5xl text-cream mb-8">
-                The Word Before the Garment
-              </h2>
+              <div className="space-y-10">
+                <p className="font-scripture text-lg md:text-xl text-cotton/80 leading-[2.2]">
+                  In the Hebrew scriptures, the word Gibbor appears over 150
+                  times. It describes David before Goliath. It describes the
+                  angels who guard the throne. It describes the God who fights
+                  on behalf of those who cannot fight for themselves. It does
+                  not mean invincible. It does not mean untouched. It means: one
+                  who carries the weight and does not break.
+                </p>
 
-              <p className="font-scripture text-lg md:text-xl text-cotton/70 leading-[2.2] mb-8 mx-auto">
-                In the Hebrew scriptures, the word Gibbor appears over 150
-                times. It describes David before Goliath. It describes the
-                angels who guard the throne. It describes the God who fights
-                on behalf of those who cannot fight for themselves. It does
-                not mean invincible. It does not mean untouched. It means: one
-                who carries the weight and does not break.
-              </p>
+                <p className="font-scripture text-lg md:text-xl text-cotton/80 leading-[2.2]">
+                  GHUBOR was born from this word — not as a brand, but as a
+                  language. A way of marking the body with the truths that the
+                  world cannot see. Every garment is a verse. Every thread is a
+                  declaration. Every number stamped in oxblood ink is a covenant
+                  between the maker and the bearer: you are not alone in the
+                  unseen war.
+                </p>
 
-              <p className="font-scripture text-lg md:text-xl text-cotton/70 leading-[2.2] mb-8 mx-auto">
-                GHUBOR was born from this word — not as a brand, but as a
-                language. A way of marking the body with the truths that the
-                world cannot see. Every garment is a verse. Every thread is a
-                declaration. Every number stamped in oxblood ink is a covenant
-                between the maker and the bearer: you are not alone in the
-                unseen war.
-              </p>
-
-              <p className="font-scripture text-lg md:text-xl text-cotton/70 leading-[2.2] mx-auto">
-                We do not make clothing. We forge armor. And the armor is
-                scripture — dense, weighted, unrelenting — pressed against
-                your skin so that when the battle comes, and it will come, the
-                Word is closer than your own heartbeat.
-              </p>
+                <p className="font-scripture text-lg md:text-xl text-cotton/80 leading-[2.2]">
+                  We do not make clothing. We forge armor. And the armor is
+                  scripture — dense, weighted, unrelenting — pressed against
+                  your skin so that when the battle comes, and it will come, the
+                  Word is closer than your own heartbeat.
+                </p>
+              </div>
             </RevealBlock>
-            </div>
           </div>
         </section>
 
         {/* ═══════════════════════════════════════════════════════
            THE GLYPH — Isolated on black
            ═══════════════════════════════════════════════════════ */}
-        <section className="border-t border-ash/15 py-24 md:py-40">
+        <section className="py-24 md:py-40 bg-void/50">
           <RevealBlock>
             <div className="text-center mb-16">
-              <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-4">
+              <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-4 uppercase">
                 The Seal
               </p>
               <h2 className="font-blackletter text-3xl md:text-5xl text-cream">
@@ -152,7 +145,7 @@ export default function MythosPage() {
               </h2>
             </div>
 
-            <div className="relative max-w-md mx-auto aspect-square">
+            <div className="relative max-w-sm mx-auto aspect-square opacity-80">
               <Image
                 src="/images/details/glyph.png"
                 alt="The Gibbor glyph — the seal of GHUBOR"
@@ -162,8 +155,8 @@ export default function MythosPage() {
               />
             </div>
 
-            <div className="max-w-xl mx-auto mt-16 px-8 text-center">
-              <p className="font-scripture text-base text-parchment/40 leading-[2] italic">
+            <div className="max-w-xl mx-auto mt-16 px-6 text-center">
+              <p className="font-scripture text-base md:text-lg text-parchment/50 leading-[2] italic">
                 The Gibbor glyph is not a logo. It is a seal — an abstracted
                 mark drawn from the Hebrew warrior tradition, representing the
                 intersection of struggle and transcendence. It is found on
@@ -177,127 +170,84 @@ export default function MythosPage() {
         {/* ═══════════════════════════════════════════════════════
            THE THREE TENSIONS
            ═══════════════════════════════════════════════════════ */}
-        <section className="border-t border-ash/15 py-20 md:py-32">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div className="max-w-3xl mx-auto text-center">
+        <section className="py-24 md:py-40">
+          <div className="max-w-2xl mx-auto px-6 md:px-0">
             <RevealBlock>
-              <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
-                The Foundation
-              </p>
-              <div className="w-10 h-px bg-oxblood mb-10 mx-auto" />
-              <h2 className="font-blackletter text-3xl md:text-5xl text-cream mb-16">
-                Three Tensions
-              </h2>
-            </RevealBlock>
-
-            {/* Struggle */}
-            <RevealBlock delay={0.1}>
-              <div className="mb-16 pb-16 border-b border-ash/10">
-                <span className="font-blackletter text-6xl md:text-8xl text-cream/[0.06] leading-none block mb-4">
-                  I
-                </span>
-                <h3 className="font-blackletter text-2xl md:text-3xl text-cream mb-4">
-                  Struggle
-                </h3>
-                <p className="font-scripture text-base text-cotton/60 leading-[2] italic max-w-2xl mx-auto">
-                  The raw material. The darkness before the dawn. Struggle is
-                  not punishment — it is the forge. Every Gibbor was shaped in
-                  the crucible of a fight they did not choose. Jacob wrestled
-                  through the night and walked away with a limp and a new
-                  name. David carried stones before he carried a crown. The
-                  garment begins here: in the tension, the resistance, the
-                  refusal to be broken by what was meant to break you.
+              <div className="text-center mb-24">
+                <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6 uppercase">
+                  The Foundation
                 </p>
+                <div className="w-px h-12 bg-oxblood/40 mx-auto mb-10" />
+                <h2 className="font-blackletter text-4xl md:text-5xl text-cream">
+                  Three Tensions
+                </h2>
               </div>
             </RevealBlock>
 
-            {/* Faith */}
-            <RevealBlock delay={0.1}>
-              <div className="mb-16 pb-16 border-b border-ash/10">
-                <span className="font-blackletter text-6xl md:text-8xl text-cream/[0.06] leading-none block mb-4">
-                  II
-                </span>
-                <h3 className="font-blackletter text-2xl md:text-3xl text-cream mb-4">
-                  Faith
-                </h3>
-                <p className="font-scripture text-base text-cotton/60 leading-[2] italic max-w-2xl mx-auto">
-                  The decision made in the dark. Faith is not certainty — it
-                  is the act of standing when you cannot see the ground
-                  beneath you. It is the ritual of putting on armor that the
-                  world calls invisible. Every GHUBOR garment is dense with
-                  scripture because faith must be dense. It must have texture.
-                  It must be felt against the skin — not as comfort, but as
-                  commitment. A daily covenant, renewed with every wearing.
-                </p>
-              </div>
-            </RevealBlock>
+            <div className="space-y-32">
+              {/* Struggle */}
+              <RevealBlock delay={0.1}>
+                <div className="flex flex-col items-center text-center">
+                  <span className="font-blackletter text-7xl text-cream/[0.04] leading-none mb-6">
+                    I
+                  </span>
+                  <h3 className="font-blackletter text-3xl text-cream mb-6">
+                    Struggle
+                  </h3>
+                  <p className="font-scripture text-lg text-cotton/70 leading-[2.2] italic max-w-xl">
+                    The raw material. The darkness before the dawn. Struggle is
+                    not punishment — it is the forge. Every Gibbor was shaped in
+                    the crucible of a fight they did not choose. Jacob wrestled
+                    through the night and walked away with a limp and a new
+                    name. David carried stones before he carried a crown. The
+                    garment begins here: in the tension, the resistance, the
+                    refusal to be broken by what was meant to break you.
+                  </p>
+                </div>
+              </RevealBlock>
 
-            {/* Transcendence */}
-            <RevealBlock delay={0.1}>
-              <div>
-                <span className="font-blackletter text-6xl md:text-8xl text-cream/[0.06] leading-none block mb-4">
-                  III
-                </span>
-                <h3 className="font-blackletter text-2xl md:text-3xl text-cream mb-4">
-                  Transcendence
-                </h3>
-                <p className="font-scripture text-base text-cotton/60 leading-[2] italic max-w-2xl mx-auto">
-                  The becoming. Transcendence is not escape from the
-                  battlefield — it is transformation within it. The moment
-                  when the armor is no longer separate from the body. When the
-                  scripture is no longer read but lived. When the struggle has
-                  been absorbed into the marrow and faith has calcified into
-                  identity. The Gibbor does not overcome the war. The Gibbor
-                  becomes the war — and emerges as something the darkness
-                  cannot name.
-                </p>
-              </div>
-            </RevealBlock>
-            </div>
-          </div>
-        </section>
+              {/* Faith */}
+              <RevealBlock delay={0.1}>
+                <div className="flex flex-col items-center text-center">
+                  <span className="font-blackletter text-7xl text-cream/[0.04] leading-none mb-6">
+                    II
+                  </span>
+                  <h3 className="font-blackletter text-3xl text-cream mb-6">
+                    Faith
+                  </h3>
+                  <p className="font-scripture text-lg text-cotton/70 leading-[2.2] italic max-w-xl">
+                    The decision made in the dark. Faith is not certainty — it
+                    is the act of standing when you cannot see the ground
+                    beneath you. It is the ritual of putting on armor that the
+                    world calls invisible. Every GHUBOR garment is dense with
+                    scripture because faith must be dense. It must have texture.
+                    It must be felt against the skin — not as comfort, but as
+                    commitment. A daily covenant, renewed with every wearing.
+                  </p>
+                </div>
+              </RevealBlock>
 
-        {/* ═══════════════════════════════════════════════════════
-           THE CRAFT
-           ═══════════════════════════════════════════════════════ */}
-        <section className="border-t border-ash/15 py-20 md:py-32">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-            <div className="max-w-3xl mx-auto text-center">
-            <RevealBlock>
-              <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
-                The Making
-              </p>
-              <div className="w-10 h-px bg-oxblood mb-10 mx-auto" />
-              <h2 className="font-blackletter text-3xl md:text-5xl text-cream mb-8">
-                How an Artifact is Forged
-              </h2>
-
-              <p className="font-scripture text-lg text-cotton/70 leading-[2.2] mb-8 mx-auto">
-                Each GHUBOR artifact is produced in limited runs — never more
-                than 100 pieces per garment, with select pieces limited to 50.
-                We do not restock. We do not reprint. When a run is complete,
-                it enters the archive. The artifact exists in the hands of its
-                bearers and nowhere else.
-              </p>
-
-              <p className="font-scripture text-lg text-cotton/70 leading-[2.2] mb-8 mx-auto">
-                The scripture is set by hand in dense, cream-colored type —
-                chosen not for aesthetics but for legibility against the void
-                of the fabric. Each verse is selected for its relevance to the
-                garment&apos;s name and its position within the three pillars.
-                The oxblood ink used for the hand-numbered tags is mixed to a
-                proprietary shade that sits between blood and earth — a color
-                that carries weight without shouting.
-              </p>
-
-              <p className="font-scripture text-lg text-cotton/70 leading-[2.2] mx-auto">
-                We do not use the language of commerce. We do not say
-                &ldquo;shop&rdquo; or &ldquo;add to cart.&rdquo; You do not
-                buy a GHUBOR garment. You claim it. You bear it. And in
-                bearing it, you enter the myth — not as a customer, but as a
-                Gibbor.
-              </p>
-            </RevealBlock>
+              {/* Transcendence */}
+              <RevealBlock delay={0.1}>
+                <div className="flex flex-col items-center text-center">
+                  <span className="font-blackletter text-7xl text-cream/[0.04] leading-none mb-6">
+                    III
+                  </span>
+                  <h3 className="font-blackletter text-3xl text-cream mb-6">
+                    Transcendence
+                  </h3>
+                  <p className="font-scripture text-lg text-cotton/70 leading-[2.2] italic max-w-xl">
+                    The becoming. Transcendence is not escape from the
+                    battlefield — it is transformation within it. The moment
+                    when the armor is no longer separate from the body. When the
+                    scripture is no longer read but lived. When the struggle has
+                    been absorbed into the marrow and faith has calcified into
+                    identity. The Gibbor does not overcome the war. The Gibbor
+                    becomes the war — and emerges as something the darkness
+                    cannot name.
+                  </p>
+                </div>
+              </RevealBlock>
             </div>
           </div>
         </section>
@@ -305,15 +255,14 @@ export default function MythosPage() {
         {/* ═══════════════════════════════════════════════════════
            CLOSING FRAGMENT
            ═══════════════════════════════════════════════════════ */}
-        <section className="border-t border-ash/15 py-32 md:py-48">
-          <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center">
-          <RevealBlock>
-            <div className="sacred-divider mb-12 mx-auto" />
-            <p className="font-blackletter text-3xl md:text-5xl lg:text-6xl text-cream max-w-3xl mx-auto leading-[1.1]">
-              You are the artifact.
-            </p>
-            <div className="sacred-divider mt-12 mx-auto" />
-          </RevealBlock>
+        <section className="py-32 md:py-48 bg-void/50">
+          <div className="max-w-[1400px] mx-auto px-6 text-center">
+            <RevealBlock>
+              <div className="w-px h-16 bg-oxblood/30 mx-auto mb-12" />
+              <p className="font-blackletter text-4xl md:text-6xl text-cream max-w-3xl mx-auto leading-[1.1]">
+                You are the artifact.
+              </p>
+            </RevealBlock>
           </div>
         </section>
       </main>

@@ -140,11 +140,14 @@ export default function ArtifactsPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-32 md:pt-48 flex-grow">
+      <main className="flex-grow flex flex-col">
+        {/* Concrete spacer to guarantee clearing the fixed Navbar */}
+        <div className="h-32 md:h-48 w-full flex-shrink-0" />
+
         {/* ═══════════════════════════════════════════════════════
            HEADER
            ═══════════════════════════════════════════════════════ */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 pt-10 md:pt-20 pb-10">
+        <section className="max-w-[1400px] mx-auto px-6 md:px-12 pb-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
