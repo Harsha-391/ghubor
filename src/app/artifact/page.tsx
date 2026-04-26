@@ -90,9 +90,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             alt={product.name}
             fill
             className="object-contain transition-transform duration-700 ease-out group-hover:scale-105"
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
           />
-          {/* Hover overlay */}
           <div className="absolute inset-0 bg-void/0 group-hover:bg-void/20 transition-colors duration-500" />
 
           {/* Quick-view label */}
@@ -140,19 +139,15 @@ export default function ArtifactsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow flex flex-col">
-        {/* Concrete spacer to guarantee clearing the fixed Navbar */}
-        <div className="h-32 md:h-48 w-full flex-shrink-0" />
+      <main className="flex-grow">
+        <div className="h-24 md:h-32 w-full" />
 
-        {/* ═══════════════════════════════════════════════════════
-           HEADER
-           ═══════════════════════════════════════════════════════ */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 pb-10">
+        {/* HEADER */}
+        <section className="w-full pb-10 px-6 md:px-12 lg:px-20 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
-            className="text-center"
           >
             <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-4">
               The Collection
@@ -167,16 +162,14 @@ export default function ArtifactsPage() {
           </motion.div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════
-           FILTER BAR
-           ═══════════════════════════════════════════════════════ */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 pb-10 border-b border-ash/15">
+        {/* FILTER BAR */}
+        <section className="w-full px-6 md:px-12 lg:px-20 pb-8 border-b border-ash/15">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-6">
               <span className="font-ui text-[10px] text-iron tracking-[0.3em] hidden sm:inline">
                 Filter
               </span>
-              <div className="flex gap-3">
+              <div className="flex gap-3 flex-wrap">
                 {categories.map((cat) => (
                   <button
                     key={cat}
@@ -193,23 +186,20 @@ export default function ArtifactsPage() {
               </div>
             </div>
 
-            <span className="font-ui text-[10px] text-iron/50 tracking-wider">
+            <span className="font-ui text-[10px] text-iron/50 tracking-wider flex-shrink-0 ml-4">
               {filtered.length} artifact{filtered.length !== 1 ? "s" : ""}
             </span>
           </div>
         </section>
 
-        {/* ═══════════════════════════════════════════════════════
-           PRODUCT GRID
-           ═══════════════════════════════════════════════════════ */}
-        <section className="max-w-[1400px] mx-auto px-6 md:px-12 py-12 md:py-16">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8">
+        {/* PRODUCT GRID */}
+        <section className="w-full px-6 md:px-12 lg:px-20 py-12 md:py-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-8">
             {filtered.map((product, i) => (
               <ProductCard key={product.id} product={product} index={i} />
             ))}
           </div>
 
-          {/* Empty state */}
           {filtered.length === 0 && (
             <div className="text-center py-24">
               <p className="font-blackletter text-2xl text-cream/30 mb-4">

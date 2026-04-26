@@ -49,15 +49,15 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
     <div className="border-t border-ash/15">
       <motion.div
         ref={ref}
-        className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 py-16 md:py-24 items-center"
+        className="w-full px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 py-14 md:py-20 items-start"
       >
         {/* Image Side */}
-        <div className={`relative overflow-hidden ${isEven ? "" : "lg:order-2"}`}>
+        <div className={`relative ${isEven ? "" : "lg:order-2"}`}>
           <motion.div
-            initial={{ scale: 1.1 }}
-            animate={isInView ? { scale: 1 } : { scale: 1.1 }}
+            initial={{ scale: 1.05 }}
+            animate={isInView ? { scale: 1 } : { scale: 1.05 }}
             transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] as const }}
-            className="relative w-full aspect-[4/5] overflow-hidden bg-charcoal/20"
+            className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-charcoal/20"
           >
             <Image
               src={pillar.image}
@@ -74,39 +74,39 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 0.06 } : { opacity: 0 }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className="absolute bottom-4 right-4 font-blackletter text-[8rem] md:text-[12rem] text-cream leading-none pointer-events-none"
+            className="absolute bottom-4 right-4 font-blackletter text-[8rem] md:text-[10rem] text-cream leading-none pointer-events-none select-none"
           >
             {pillar.number}
           </motion.span>
         </div>
 
         {/* Text Side */}
-        <div className={`flex flex-col justify-center py-4 lg:py-8 ${isEven ? "" : "lg:order-1"}`}>
+        <div className={`flex flex-col pt-2 lg:pt-4 ${isEven ? "" : "lg:order-1"}`}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
           >
             {/* Section marker */}
-            <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
+            <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-8">
               Pillar {pillar.number}
             </p>
 
             {/* Divider */}
-            <div className="w-10 h-px bg-oxblood mb-8" />
+            <div className="w-10 h-px bg-oxblood mb-10" />
 
             {/* Title */}
-            <h2 className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-cream mb-6">
+            <h2 className="font-blackletter text-4xl md:text-5xl lg:text-6xl text-cream mb-8">
               {pillar.title}
             </h2>
 
             {/* Verse */}
-            <blockquote className="font-scripture text-sm text-parchment/50 border-l-2 border-oxblood/40 pl-4 mb-10 italic">
+            <blockquote className="font-scripture text-sm text-parchment/50 border-l-2 border-oxblood/40 pl-4 mb-12 italic leading-relaxed">
               {pillar.verse}
             </blockquote>
 
             {/* Body */}
-            <p className="font-scripture text-base md:text-lg text-cotton/70 leading-[2] max-w-lg">
+            <p className="font-scripture text-base md:text-lg text-cotton/70 leading-[2.1]">
               {pillar.body}
             </p>
           </motion.div>
@@ -118,9 +118,9 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
 
 export default function Pillars() {
   return (
-    <section className="relative pb-32 md:pb-48">
+    <section className="relative pb-24 md:pb-40">
       {/* Section Header */}
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 text-center py-20 md:py-32">
+      <div className="w-full px-6 md:px-12 lg:px-20 text-center py-16 md:py-24">
         <p className="font-ui text-[11px] text-oxblood tracking-[0.3em] mb-4">
           Philosophy
         </p>

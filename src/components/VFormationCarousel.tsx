@@ -115,7 +115,7 @@ export default function VFormationCarousel() {
 
       {/* Carousel Container */}
       <div
-        className="relative h-[500px] md:h-[650px] flex items-center justify-center"
+        className="relative h-[600px] md:h-[780px] flex items-center justify-center"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -135,16 +135,16 @@ export default function VFormationCarousel() {
               initial={false}
               animate={{
                 x: `${position * 280}px`,
-                scale: isActive ? 1 : 0.7 - Math.abs(position) * 0.08,
+                scale: isActive ? 1 : 0.75 - Math.abs(position) * 0.06,
                 zIndex: isActive ? 10 : 5 - Math.abs(position),
-                opacity: isActive ? 1 : 0.3 - Math.abs(position) * 0.05,
+                opacity: isActive ? 1 : 0.65 - Math.abs(position) * 0.1,
               }}
               transition={{
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1] as const,
               }}
               style={{
-                filter: isActive ? "none" : "brightness(0.25)",
+                filter: isActive ? "none" : "brightness(0.6)",
               }}
             >
               <div className="relative w-[260px] md:w-[360px] h-[380px] md:h-[520px]">
@@ -156,9 +156,9 @@ export default function VFormationCarousel() {
                   sizes="(max-width: 768px) 260px, 360px"
                 />
 
-                {/* Dark overlay for non-active */}
+                {/* Subtle overlay for non-active */}
                 {!isActive && (
-                  <div className="absolute inset-0 bg-void/50" />
+                  <div className="absolute inset-0 bg-void/15" />
                 )}
               </div>
 

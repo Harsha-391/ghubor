@@ -172,9 +172,8 @@ export default function ArtifactPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow flex flex-col">
-        {/* Concrete spacer to guarantee clearing the fixed Navbar */}
-        <div className="h-32 md:h-48 w-full flex-shrink-0" />
+      <main className="flex-grow">
+        <div className="h-24 md:h-32 w-full" />
 
         {/* ═══════════════════════════════════════════════════════
            HERO — Asymmetric Editorial Layout
