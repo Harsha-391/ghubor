@@ -3,7 +3,10 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence, px } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import "./Navbar.css";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
 
 const navLinks = [
   { label: "Enter", href: "/" },
@@ -14,6 +17,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -42,7 +46,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop Links */}
+          {/* Desktop Links & Theme Toggle */}
           <div className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
               <Link
@@ -54,14 +58,32 @@ export default function Navbar() {
                 <span className="absolute -bottom-1 left-0 w-0 h-px bg-oxblood group-hover:w-full transition-all duration-500" />
               </Link>
             ))}
+            
+            <button
+              onClick={toggleTheme}
+              className="text-stone hover:text-cream transition-colors duration-500"
+              aria-label="Toggle Theme"
+            >
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
           </div>
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden relative z-50 w-8 h-8 flex flex-col justify-center gap-1.5"
-            aria-label="Toggle menu"
-          >
+          {/* Mobile Controls */}
+          <div className="md:hidden flex items-center gap-6 relative z-50">
+            <button
+              onClick={toggleTheme}
+              className="text-stone hover:text-cream transition-colors duration-500"
+              aria-label="Toggle Theme"
+            >
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+
+            {/* Mobile Toggle */}
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="w-8 h-8 flex flex-col justify-center gap-1.5"
+              aria-label="Toggle menu"
+            >
             <motion.span
               animate={menuOpen ? { rotate: 45, y: 5 } : { rotate: 0, y: 0 }}
               className="block w-6 h-px bg-cream origin-center"
@@ -79,7 +101,8 @@ export default function Navbar() {
               className="block w-6 h-px bg-cream origin-center"
               transition={{ duration: 0.4 }}
             />
-          </button>
+            </button>
+          </div>
         </div>
       </nav>
 

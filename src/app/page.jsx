@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow flex flex-col">
+      <main className="flex-grow flex flex-col gap-24 md:gap-40 pt-16">
         <Hero />
         <VFormationCarousel />
         <TheGrind />

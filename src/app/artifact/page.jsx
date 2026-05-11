@@ -7,17 +7,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-interface Product {
-  id: string;
-  name: string;
-  subtitle: string;
-  price: string;
-  edition: string;
-  image: string;
-  category: string;
-}
-
-const products: Product[] = [
+const products = [
   {
     id: "genesis-tee",
     name: "Genesis Tee",
@@ -67,7 +57,7 @@ const products: Product[] = [
 
 const categories = ["All", "Tees", "Outerwear", "Bottoms"];
 
-function ProductCard({ product, index }: { product: Product; index: number }) {
+function ProductCard({ product, index }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
 
@@ -79,7 +69,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       transition={{
         duration: 0.7,
         delay: index * 0.08,
-        ease: [0.16, 1, 0.3, 1] as const,
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       <Link href={`/artifact/${product.id}`} className="group block">
@@ -147,7 +137,7 @@ export default function ArtifactsPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-4">
               The Collection

@@ -1,0 +1,51 @@
+.carousel-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .carousel-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.carousel-header {
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .carousel-header {
+    margin-bottom: 6rem;
+  }
+}
+
+.carousel-track {
+  height: 700px;
+}
+
+@media (min-width: 768px) {
+  .carousel-track {
+    height: 900px;
+  }
+}
+
+.carousel-image-container {
+  width: 260px;
+  height: 380px;
+}
+
+@media (min-width: 768px) {
+  .carousel-image-container {
+    width: 360px;
+    height: 520px;
+  }
+}
+
+.carousel-text-container {
+  margin-top: 2rem;
+}
+
+.carousel-dots {
+  margin-top: 3rem;
+}

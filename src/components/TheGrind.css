@@ -1,0 +1,50 @@
+.grind-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .grind-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.grind-header {
+  margin-bottom: 3rem;
+}
+
+.grind-image-section {
+  margin-bottom: 8rem;
+}
+
+@media (min-width: 768px) {
+  .grind-image-section {
+    margin-bottom: 12rem;
+  }
+}
+
+.grind-text-section {
+  margin-top: 6rem;
+}
+
+@media (min-width: 768px) {
+  .grind-text-section {
+    margin-top: 8rem;
+  }
+}
+
+.marquee-track {
+  display: flex;
+  animation: grind-scroll 60s linear infinite;
+  will-change: transform;
+}
+
+@keyframes grind-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

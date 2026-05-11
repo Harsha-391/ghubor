@@ -3,17 +3,9 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
+import "./Pillars.css";
 
-interface Pillar {
-  id: string;
-  number: string;
-  title: string;
-  verse: string;
-  body: string;
-  image: string;
-}
-
-const pillars: Pillar[] = [
+const pillars = [
   {
     id: "struggle",
     number: "I",
@@ -40,23 +32,23 @@ const pillars: Pillar[] = [
   },
 ];
 
-function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
+function PillarSection({ pillar, index }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isEven = index % 2 === 0;
 
   return (
-    <div className="border-t border-ash/15">
+    <div className="pillar-block border-t border-ash/15">
       <motion.div
         ref={ref}
-        className="w-full px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 py-14 md:py-20 items-start"
+        className="pillar-grid w-full px-6 md:px-12 lg:px-20 grid grid-cols-1 lg:grid-cols-2 items-start"
       >
         {/* Image Side */}
-        <div className={`relative ${isEven ? "" : "lg:order-2"}`}>
+        <div className={`pillar-image-container relative ${isEven ? "" : "lg:order-2"}`}>
           <motion.div
             initial={{ scale: 1.05 }}
             animate={isInView ? { scale: 1 } : { scale: 1.05 }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full h-[400px] md:h-[500px] overflow-hidden bg-charcoal/20"
           >
             <Image
@@ -81,11 +73,11 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
         </div>
 
         {/* Text Side */}
-        <div className={`flex flex-col pt-2 lg:pt-4 ${isEven ? "" : "lg:order-1"}`}>
+        <div className={`pillar-text-container flex flex-col ${isEven ? "" : "lg:order-1"}`}>
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Section marker */}
             <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-8">
@@ -101,12 +93,12 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
             </h2>
 
             {/* Verse */}
-            <blockquote className="font-scripture text-sm text-parchment/50 border-l-2 border-oxblood/40 pl-4 mb-12 italic leading-relaxed">
+            <blockquote className="font-scripture text-sm text-parchment/80 border-l-2 border-oxblood/40 pl-4 mb-12 italic leading-relaxed">
               {pillar.verse}
             </blockquote>
 
             {/* Body */}
-            <p className="font-scripture text-base md:text-lg text-cotton/70 leading-[2.1]">
+            <p className="font-scripture text-base md:text-lg text-cotton/90 leading-[2.1]">
               {pillar.body}
             </p>
           </motion.div>
@@ -118,16 +110,16 @@ function PillarSection({ pillar, index }: { pillar: Pillar; index: number }) {
 
 export default function Pillars() {
   return (
-    <section className="relative pb-24 md:pb-40">
+    <section className="pillars-section relative">
       {/* Section Header */}
-      <div className="w-full px-6 md:px-12 lg:px-20 text-center py-16 md:py-24">
+      <div className="pillars-header w-full px-6 md:px-12 lg:px-20 text-center">
         <p className="font-ui text-[11px] text-oxblood tracking-[0.3em] mb-4">
           Philosophy
         </p>
         <h2 className="font-blackletter text-4xl md:text-6xl text-cream mb-6">
           The Three Pillars
         </h2>
-        <p className="font-scripture text-base text-parchment/40 max-w-md mx-auto italic">
+        <p className="font-scripture text-base text-parchment/80 max-w-md mx-auto italic">
           Every GHUBOR garment is forged in the tension between these three truths.
         </p>
       </div>

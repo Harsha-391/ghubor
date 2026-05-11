@@ -4,16 +4,9 @@ import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import "./VFormationCarousel.css";
 
-interface Product {
-  id: string;
-  name: string;
-  subtitle: string;
-  image: string;
-  price: string;
-}
-
-const products: Product[] = [
+const products = [
   {
     id: "genesis-tee",
     name: "Genesis Tee",
@@ -66,7 +59,7 @@ export default function VFormationCarousel() {
 
   // Keyboard navigation
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e) => {
       if (e.key === "ArrowLeft") handlePrev();
       if (e.key === "ArrowRight") handleNext();
     };
@@ -74,11 +67,11 @@ export default function VFormationCarousel() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [handlePrev, handleNext]);
 
-  const handleTouchStart = (e: React.TouchEvent) => {
+  const handleTouchStart = (e) => {
     touchStartX.current = e.targetTouches[0].clientX;
   };
 
-  const handleTouchMove = (e: React.TouchEvent) => {
+  const handleTouchMove = (e) => {
     touchEndX.current = e.targetTouches[0].clientX;
   };
 
@@ -90,7 +83,7 @@ export default function VFormationCarousel() {
     }
   };
 
-  const getPosition = (index: number) => {
+  const getPosition = (index) => {
     const diff = index - activeIndex;
     const total = products.length;
     // Handle wrapping
@@ -102,9 +95,9 @@ export default function VFormationCarousel() {
   };
 
   return (
-    <section className="relative py-24 md:py-40 overflow-hidden">
+    <section className="carousel-section relative overflow-hidden">
       {/* Section Header */}
-      <div className="text-center mb-16 md:mb-24 px-6">
+      <div className="carousel-header text-center px-6">
         <p className="font-ui text-[11px] text-oxblood tracking-[0.3em] mb-4">
           Current Drop
         </p>
@@ -115,7 +108,7 @@ export default function VFormationCarousel() {
 
       {/* Carousel Container */}
       <div
-        className="relative h-[600px] md:h-[780px] flex items-center justify-center"
+        className="carousel-track relative flex items-center justify-center"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -130,24 +123,27 @@ export default function VFormationCarousel() {
           return (
             <motion.div
               key={product.id}
-              className="absolute cursor-pointer"
+              className="carousel-item absolute cursor-pointer"
               onClick={() => setActiveIndex(index)}
               initial={false}
               animate={{
-                x: `${position * 280}px`,
+                x: `calc(-50% + ${position * 280}px)`,
+                y: "-50%",
                 scale: isActive ? 1 : 0.75 - Math.abs(position) * 0.06,
                 zIndex: isActive ? 10 : 5 - Math.abs(position),
                 opacity: isActive ? 1 : 0.65 - Math.abs(position) * 0.1,
               }}
               transition={{
                 duration: 0.8,
-                ease: [0.16, 1, 0.3, 1] as const,
+                ease: [0.16, 1, 0.3, 1],
               }}
               style={{
+                top: "50%",
+                left: "50%",
                 filter: isActive ? "none" : "brightness(0.6)",
               }}
             >
-              <div className="relative w-[260px] md:w-[360px] h-[380px] md:h-[520px]">
+              <div className="carousel-image-container relative">
                 <Image
                   src={product.image}
                   alt={product.name}
@@ -166,7 +162,7 @@ export default function VFormationCarousel() {
               <AnimatePresence>
                 {isActive && (
                   <motion.div
-                    className="mt-8 text-center"
+                    className="carousel-text-container text-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -175,7 +171,7 @@ export default function VFormationCarousel() {
                     <h3 className="font-blackletter text-2xl md:text-3xl text-cream mb-2">
                       {product.name}
                     </h3>
-                    <p className="font-scripture text-sm text-parchment/60 mb-4 max-w-[300px] mx-auto">
+                    <p className="font-scripture text-sm text-parchment/90 mb-4 max-w-[300px] mx-auto">
                       {product.subtitle}
                     </p>
                     <Link
@@ -193,7 +189,7 @@ export default function VFormationCarousel() {
       </div>
 
       {/* Navigation Dots */}
-      <div className="flex justify-center gap-3 mt-12">
+      <div className="carousel-dots flex justify-center gap-3">
         {products.map((_, i) => (
           <button
             key={i}

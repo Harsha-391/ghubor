@@ -1,0 +1,52 @@
+.pillars-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .pillars-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+.pillars-header {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .pillars-header {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+.pillar-grid {
+  gap: 2.5rem;
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+  .pillar-grid {
+    gap: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .pillar-grid {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+.pillar-text-container {
+  padding-top: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .pillar-text-container {
+    padding-top: 1rem;
+  }
+}

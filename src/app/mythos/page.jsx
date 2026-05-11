@@ -10,9 +10,6 @@ import Footer from "@/components/Footer";
 function RevealBlock({
   children,
   delay = 0,
-}: {
-  children: React.ReactNode;
-  delay?: number;
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -24,7 +21,7 @@ function RevealBlock({
       transition={{
         duration: 0.9,
         delay,
-        ease: [0.16, 1, 0.3, 1] as const,
+        ease: [0.16, 1, 0.3, 1],
       }}
     >
       {children}
@@ -86,7 +83,7 @@ export default function MythosPage() {
               transition={{
                 duration: 1.2,
                 delay: 0.8,
-                ease: [0.16, 1, 0.3, 1] as const,
+                ease: [0.16, 1, 0.3, 1],
               }}
             >
               Gibbor

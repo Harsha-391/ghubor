@@ -8,20 +8,7 @@ import { useParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-interface ArtifactData {
-  name: string;
-  subtitle: string;
-  price: string;
-  edition: string;
-  images: string[];
-  scripture: string;
-  description: string;
-  details: string[];
-  tagInfo: string;
-  glyphInfo: string;
-}
-
-const artifacts: Record<string, ArtifactData> = {
+const artifacts = {
   "genesis-tee": {
     name: "Genesis Tee",
     subtitle: "The first word spoken into the void.",
@@ -136,7 +123,7 @@ const artifacts: Record<string, ArtifactData> = {
 
 export default function ArtifactPage() {
   const params = useParams();
-  const id = params.id as string;
+  const id = params.id;
   const artifact = artifacts[id];
 
   const detailsRef = useRef(null);
@@ -222,7 +209,7 @@ export default function ArtifactPage() {
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] as const }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
                 <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
                   Artifact
@@ -295,7 +282,7 @@ export default function ArtifactPage() {
                 ref={detailsRef}
                 initial={{ opacity: 0, y: 40 }}
                 animate={detailsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
                 <p className="font-ui text-[10px] text-oxblood tracking-[0.4em] mb-6">
                   The Artifact&apos;s History
@@ -339,7 +326,7 @@ export default function ArtifactPage() {
                 ref={tagRef}
                 initial={{ opacity: 0, y: 30 }}
                 animate={tagInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden bg-charcoal/20">
                   <Image
@@ -363,7 +350,7 @@ export default function ArtifactPage() {
                 ref={glyphRef}
                 initial={{ opacity: 0, y: 30 }}
                 animate={glyphInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div className="relative w-full aspect-[4/3] mb-8 overflow-hidden bg-charcoal/20">
                   <Image

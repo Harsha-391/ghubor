@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import "./Hero.css";
 
 export default function Hero() {
   return (
@@ -38,7 +39,7 @@ export default function Hero() {
             className="font-blackletter text-5xl sm:text-6xl md:text-8xl lg:text-9xl text-cream leading-[0.95] mb-8"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             The weight of<br />being human.
           </motion.h1>

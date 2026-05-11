@@ -6,24 +6,59 @@
    ═══════════════════════════════════════════════════════════ */
 
 @theme {
-  /* ── Palette ── */
-  --color-void: #0a0a0a;
-  --color-charcoal: #1a1a1a;
-  --color-ash: #2a2a2a;
-  --color-smoke: #3a3a3a;
-  --color-iron: #6a6a6a;
-  --color-stone: #8a8a8a;
-  --color-cream: #f5f0e8;
-  --color-cotton: #e8e0d0;
-  --color-parchment: #d4c9b5;
-  --color-oxblood: #8b1a1a;
-  --color-crimson: #a02020;
-  --color-blood: #6b0f0f;
+  /* ── Palette Mappings ── */
+  --color-void: var(--void);
+  --color-charcoal: var(--charcoal);
+  --color-ash: var(--ash);
+  --color-smoke: var(--smoke);
+  --color-iron: var(--iron);
+  --color-stone: var(--stone);
+  --color-cream: var(--cream);
+  --color-cotton: var(--cotton);
+  --color-parchment: var(--parchment);
+  --color-oxblood: var(--oxblood);
+  --color-crimson: var(--crimson);
+  --color-blood: var(--blood);
 
   /* ── Typography Scale ── */
   --font-display: "UnifrakturCook", "Old English Text MT", serif;
   --font-body: "Cormorant Garamond", "Georgia", serif;
   --font-ui: "Inter", "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --void: #0a0a0a;
+  --charcoal: #1a1a1a;
+  --ash: #2a2a2a;
+  --smoke: #3a3a3a;
+  --iron: #6a6a6a;
+  --stone: #8a8a8a;
+  --cream: #f5f0e8;
+  --cotton: #e8e0d0;
+  --parchment: #d4c9b5;
+  --oxblood: #8b1a1a;
+  --crimson: #a02020;
+  --blood: #6b0f0f;
+}
+
+[data-theme='light'] {
+  --void: #f5f0e8;
+  --charcoal: #e8e0d0;
+  --ash: #d4c9b5;
+  --smoke: #c2b6a0;
+  --iron: #8a8a8a;
+  --stone: #6a6a6a;
+  --cream: #0a0a0a;
+  --cotton: #1a1a1a;
+  --parchment: #2a2a2a;
+  --oxblood: #b82b2b;
+  --crimson: #d13030;
+  --blood: #8b1a1a;
+}
+
+/* ThemedImage handles its own source per mode — no filter needed */
+.themed-image {
+  filter: none !important;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -104,29 +139,7 @@ body {
   background: var(--color-oxblood);
 }
 
-/* ═══════════════════════════════════════════════════════════
-   THE GRIND — Infinite Marquee
-   ═══════════════════════════════════════════════════════════ */
 
-@keyframes grind-scroll {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-.grind-track {
-  display: flex;
-  animation: grind-scroll 60s linear infinite;
-  will-change: transform;
-}
-
-.grind-track:hover {
-  animation-play-state: paused;
-}
 
 /* ═══════════════════════════════════════════════════════════
    REVEAL ANIMATIONS
